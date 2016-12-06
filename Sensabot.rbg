@@ -1,0 +1,210 @@
+<Version>1.0.1</Version>
+
+<VariableList>
+    <Variable>Run</Variable>
+</VariableList>
+
+<ProgrammingBlock type="functionCall" commented="1" function="playSound">
+    <Parameters>
+        <Parameter name="sound" type="base typedef" typeDef="TSounds">soundGasFillup</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" commented="1" function="playSound">
+    <Parameters>
+        <Parameter name="sound" type="base typedef" typeDef="TSounds">soundCarAlarm4</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="setTouchLEDColor">
+    <Parameters>
+        <Parameter name="nDeviceIndex" type="base typedef" typeDef="tSensors">touchLED</Parameter>
+        <Parameter name="nColor" type="base typedef" typeDef="TSimpleColors">colorGreen</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" commented="1" function="moveMotor">
+    <Parameters>
+        <Parameter name="motorPort" type="base typedef" default="motor10" typeDef="tMotor">clawMotor</Parameter>
+        <Parameter name="quantity" type="float" default="1">3</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">seconds</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" commented="1" function="moveMotor">
+    <Parameters>
+        <Parameter name="motorPort" type="base typedef" default="motor10" typeDef="tMotor">armMotor</Parameter>
+        <Parameter name="quantity" type="float" default="1">3</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">seconds</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="setValue_Text">
+    <Parameters>
+        <Parameter name="Variable" type="variable">Run</Parameter>
+        <Parameter name="RHS" type="float">1</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="loop" loopType="WhileDo">
+    <Parameters>
+        <Parameter name="LHS" type="typedef">Run</Parameter>
+        <Parameter name="operator" type="typedef">&lt;</Parameter>
+        <Parameter name="RHS" type="float">4</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="setTouchLEDColor">
+    <Parameters>
+        <Parameter name="nDeviceIndex" type="base typedef" typeDef="tSensors">touchLED</Parameter>
+        <Parameter name="nColor" type="base typedef" typeDef="TSimpleColors">colorRed</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="forward">
+    <Parameters>
+        <Parameter name="quantity" type="float" default="1">2.6</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">rotations</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="moveMotor">
+    <Parameters>
+        <Parameter name="motorPort" type="base typedef" default="motor10" typeDef="tMotor">armMotor</Parameter>
+        <Parameter name="quantity" type="float" default="1">315</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">degrees</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" commented="1" function="moveMotor">
+    <Parameters>
+        <Parameter name="motorPort" type="base typedef" default="motor10" typeDef="tMotor">clawMotor</Parameter>
+        <Parameter name="quantity" type="float" default="1">3</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">seconds</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="moveMotor">
+    <Parameters>
+        <Parameter name="motorPort" type="base typedef" default="motor10" typeDef="tMotor">armMotor</Parameter>
+        <Parameter name="quantity" type="float" default="1">-315</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">degrees</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" commented="1" function="moveMotor">
+    <Parameters>
+        <Parameter name="motorPort" type="base typedef" default="motor10" typeDef="tMotor">clawMotor</Parameter>
+        <Parameter name="quantity" type="float" default="1">-3</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">seconds</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="setValue_Expression">
+    <Parameters>
+        <Parameter name="Variable" type="variable">Run</Parameter>
+        <Parameter name="LHS" type="typedef">Run</Parameter>
+        <Parameter name="operator" type="typedef">+</Parameter>
+        <Parameter name="RHS" type="float">1</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="end"/>
+
+<ProgrammingBlock type="functionCall" function="setTouchLEDColor">
+    <Parameters>
+        <Parameter name="nDeviceIndex" type="base typedef" typeDef="tSensors">touchLED</Parameter>
+        <Parameter name="nColor" type="base typedef" typeDef="TSimpleColors">colorOrange</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="backward">
+    <Parameters>
+        <Parameter name="quantity" type="float" default="1">7.8</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">rotations</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" commented="1" function="playSound">
+    <Parameters>
+        <Parameter name="sound" type="base typedef" typeDef="TSounds">soundPowerOff2</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="moveMotor">
+    <Parameters>
+        <Parameter name="motorPort" type="base typedef" default="motor10" typeDef="tMotor">armMotor</Parameter>
+        <Parameter name="quantity" type="float" default="1">-315</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">degrees</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" commented="1" function="moveMotor">
+    <Parameters>
+        <Parameter name="motorPort" type="base typedef" default="motor10" typeDef="tMotor">clawMotor</Parameter>
+        <Parameter name="quantity" type="float" default="1">-3</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">seconds</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<RobotConfiguration>#pragma config(Sensor, port2,  touchLED,       sensorVexIQ_LED)
+#pragma config(Sensor, port3,  colorDetector,  sensorVexIQ_ColorHue)
+#pragma config(Sensor, port4,  gyroSensor,     sensorVexIQ_Gyro)
+#pragma config(Sensor, port7,  distanceMM,     sensorVexIQ_Distance)
+#pragma config(Sensor, port8,  bumpSwitch,     sensorVexIQ_Touch)
+#pragma config(Motor,  motor1,          leftMotor,     tmotorVexIQ, openLoop, driveLeft, encoder)
+#pragma config(Motor,  motor6,          rightMotor,    tmotorVexIQ, openLoop, reversed, driveRight, encoder)
+#pragma config(Motor,  motor10,         armMotor,      tmotorVexIQ, openLoop, encoder)
+#pragma config(Motor,  motor11,         clawMotor,     tmotorVexIQ, openLoop, encoder)
+//*!!Code automatically generated by 'ROBOTC' configuration wizard               !!*//
+</RobotConfiguration>
+
+<CSource>#pragma config(Sensor, port2,  touchLED,       sensorVexIQ_LED)
+#pragma config(Sensor, port3,  colorDetector,  sensorVexIQ_ColorHue)
+#pragma config(Sensor, port4,  gyroSensor,     sensorVexIQ_Gyro)
+#pragma config(Sensor, port7,  distanceMM,     sensorVexIQ_Distance)
+#pragma config(Sensor, port8,  bumpSwitch,     sensorVexIQ_Touch)
+#pragma config(Motor,  motor1,          leftMotor,     tmotorVexIQ, openLoop, driveLeft, encoder)
+#pragma config(Motor,  motor6,          rightMotor,    tmotorVexIQ, openLoop, reversed, driveRight, encoder)
+#pragma config(Motor,  motor10,         armMotor,      tmotorVexIQ, openLoop, encoder)
+#pragma config(Motor,  motor11,         clawMotor,     tmotorVexIQ, openLoop, encoder)
+//*!!Code automatically generated by 'ROBOTC' configuration wizard               !!*//
+
+
+float Run;
+
+
+task main()
+{
+	//playSound(soundGasFillup);
+	//playSound(soundCarAlarm4);
+	setTouchLEDColor(touchLED, colorGreen);
+	//moveMotor(clawMotor, 3, seconds, 50);
+	//moveMotor(armMotor, 3, seconds, 50);
+	Run = 1;
+	while (Run &lt; 4) {
+		setTouchLEDColor(touchLED, colorRed);
+		forward(2.6, rotations, 50);
+		moveMotor(armMotor, 315, degrees, 50);
+		//moveMotor(clawMotor, 3, seconds, 50);
+		moveMotor(armMotor, -315, degrees, 50);
+		//moveMotor(clawMotor, -3, seconds, 50);
+		Run = Run + 1;
+	}
+	setTouchLEDColor(touchLED, colorOrange);
+	backward(7.8, rotations, 50);
+	//playSound(soundPowerOff2);
+	moveMotor(armMotor, -315, degrees, 50);
+	//moveMotor(clawMotor, -3, seconds, 50);
+}
+</CSource>
