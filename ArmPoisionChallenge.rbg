@@ -12,7 +12,7 @@
 <ProgrammingBlock type="functionCall" function="moveMotor">
     <Parameters>
         <Parameter name="motorPort" type="base typedef" default="motor10" typeDef="tMotor">armMotor</Parameter>
-        <Parameter name="quantity" type="float" default="1">-360</Parameter>
+        <Parameter name="quantity" type="float" default="1">-520</Parameter>
         <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">degrees</Parameter>
         <Parameter name="speed" type="short" default="50">50</Parameter>
     </Parameters>
@@ -106,7 +106,7 @@ task main()
 {
 	// Arm position challenge
 	setTouchLEDColor(touchLED, colorRed);
-	moveMotor(armMotor, -360, degrees, 50);
+	moveMotor(armMotor, -520, degrees, 50);
 	moveMotor(clawMotor, -90, degrees, 50);
 	waitUntil (getBumperValue(bumpSwitch) == 1);
 	setTouchLEDColor(touchLED, colorOrange);
