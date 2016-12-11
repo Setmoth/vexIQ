@@ -33,13 +33,9 @@
     </Parameters>
 </ProgrammingBlock>
 
-<ProgrammingBlock type="comment">Stopped here, change forward from 1 to 2 (to see if it fits</ProgrammingBlock>
-
-<ProgrammingBlock type="comment">@here</ProgrammingBlock>
-
 <ProgrammingBlock type="functionCall" function="forward">
     <Parameters>
-        <Parameter name="quantity" type="float" default="1">1</Parameter>
+        <Parameter name="quantity" type="float" default="1">2</Parameter>
         <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">rotations</Parameter>
         <Parameter name="speed" type="short" default="50">50</Parameter>
     </Parameters>
@@ -185,17 +181,6 @@
     </Parameters>
 </ProgrammingBlock>
 
-<ProgrammingBlock type="comment">Lower arm</ProgrammingBlock>
-
-<ProgrammingBlock type="functionCall" function="moveMotor">
-    <Parameters>
-        <Parameter name="motorPort" type="base typedef" default="motor10" typeDef="tMotor">motor10</Parameter>
-        <Parameter name="quantity" type="float" default="1">-90</Parameter>
-        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">degrees</Parameter>
-        <Parameter name="speed" type="short" default="50">50</Parameter>
-    </Parameters>
-</ProgrammingBlock>
-
 <RobotConfiguration>#pragma config(Sensor, port2,  touchLED,       sensorVexIQ_LED)
 #pragma config(Sensor, port3,  colorDetector,  sensorVexIQ_ColorHue)
 #pragma config(Sensor, port4,  gyroSensor,     sensorVexIQ_Gyro)
@@ -229,9 +214,7 @@ task main()
 	// first Turn
 	// This should be a function to call, I need this 3 times :(
 	turnLeft(250, degrees, 50);
-	// Stopped here, change forward from 1 to 2 (to see if it fits
-	// @here
-	forward(1, rotations, 50);
+	forward(2, rotations, 50);
 	turnLeft(265, degrees, 50);
 	// second pass left
 	forward(4.5, rotations, 50);
@@ -254,7 +237,5 @@ task main()
 	turnLeft(200, degrees, 50);
 	// last pass
 	forward(4.5, rotations, 50);
-	// Lower arm
-	moveMotor(motor10, -90, degrees, 50);
 }
 </CSource>
