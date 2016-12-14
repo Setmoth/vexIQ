@@ -5,23 +5,28 @@
 <ProgrammingBlock type="functionCall" function="setTouchLEDColor">
     <Parameters>
         <Parameter name="nDeviceIndex" type="base typedef" typeDef="tSensors">touchLED</Parameter>
-        <Parameter name="nColor" type="base typedef" typeDef="TSimpleColors">colorRed</Parameter>
+        <Parameter name="nColor" type="base typedef" typeDef="TSimpleColors">colorViolet</Parameter>
     </Parameters>
 </ProgrammingBlock>
 
-<ProgrammingBlock type="functionCall" function="moveMotor">
+<ProgrammingBlock type="functionCall" function="setMotor">
     <Parameters>
-        <Parameter name="motorPort" type="base typedef" default="motor10" typeDef="tMotor">armMotor</Parameter>
-        <Parameter name="quantity" type="float" default="1">-565</Parameter>
-        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">degrees</Parameter>
-        <Parameter name="speed" type="short" default="50">50</Parameter>
+        <Parameter name="motorPort" type="base typedef" default="motor1" typeDef="tMotor">armMotor</Parameter>
+        <Parameter name="speed" type="short" default="50">-50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="setTouchLEDColor">
+    <Parameters>
+        <Parameter name="nDeviceIndex" type="base typedef" typeDef="tSensors">touchLED</Parameter>
+        <Parameter name="nColor" type="base typedef" typeDef="TSimpleColors">colorYellow</Parameter>
     </Parameters>
 </ProgrammingBlock>
 
 <ProgrammingBlock type="functionCall" function="moveMotor">
     <Parameters>
         <Parameter name="motorPort" type="base typedef" default="motor10" typeDef="tMotor">clawMotor</Parameter>
-        <Parameter name="quantity" type="float" default="1">-90</Parameter>
+        <Parameter name="quantity" type="float" default="1">-10</Parameter>
         <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">degrees</Parameter>
         <Parameter name="speed" type="short" default="50">50</Parameter>
     </Parameters>
@@ -31,7 +36,7 @@
     <Parameters>
         <Parameter name="LHS" type="typedef">getBumperValue(bumpSwitch)</Parameter>
         <Parameter name="operator" type="typedef">==</Parameter>
-        <Parameter name="RHS" type="bool" typeDef="bool">1</Parameter>
+        <Parameter name="RHS" type="float">1</Parameter>
     </Parameters>
 </ProgrammingBlock>
 
@@ -55,8 +60,17 @@
 <ProgrammingBlock type="functionCall" function="moveMotor">
     <Parameters>
         <Parameter name="motorPort" type="base typedef" default="motor10" typeDef="tMotor">clawMotor</Parameter>
-        <Parameter name="quantity" type="float" default="1">2</Parameter>
-        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">seconds</Parameter>
+        <Parameter name="quantity" type="float" default="1">10</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">degrees</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="moveMotor">
+    <Parameters>
+        <Parameter name="motorPort" type="base typedef" default="motor10" typeDef="tMotor">armMotor</Parameter>
+        <Parameter name="quantity" type="float" default="1">45</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">degrees</Parameter>
         <Parameter name="speed" type="short" default="50">50</Parameter>
     </Parameters>
 </ProgrammingBlock>
@@ -105,14 +119,16 @@
 task main()
 {
 	// Arm position challenge
-	setTouchLEDColor(touchLED, colorRed);
-	moveMotor(armMotor, -565, degrees, 50);
-	moveMotor(clawMotor, -90, degrees, 50);
+	setTouchLEDColor(touchLED, colorViolet);
+	setMotor(armMotor, -50);
+	setTouchLEDColor(touchLED, colorYellow);
+	moveMotor(clawMotor, -10, degrees, 50);
 	waitUntil (getBumperValue(bumpSwitch) == 1);
 	setTouchLEDColor(touchLED, colorOrange);
 	// move to object and grab it
 	forward(5, rotations, 50);
-	moveMotor(clawMotor, 2, seconds, 50);
+	moveMotor(clawMotor, 10, degrees, 50);
+	moveMotor(armMotor, 45, degrees, 50);
 	// roll back with object
 	backward(5, rotations, 50);
 	setTouchLEDColor(touchLED, colorGreen);
