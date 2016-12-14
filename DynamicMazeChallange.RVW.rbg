@@ -1,0 +1,256 @@
+<Version>1.0.1</Version>
+
+<ProgrammingBlock type="comment">dynamicMazeChallenge</ProgrammingBlock>
+
+<ProgrammingBlock type="comment">Arm position down on bumper</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="setMotor">
+    <Parameters>
+        <Parameter name="motorPort" type="base typedef" default="motor1" typeDef="tMotor">armMotor</Parameter>
+        <Parameter name="speed" type="short" default="50">-50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="moveMotor">
+    <Parameters>
+        <Parameter name="motorPort" type="base typedef" default="motor10" typeDef="tMotor">clawMotor</Parameter>
+        <Parameter name="quantity" type="float" default="1">-10</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">degrees</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="OneLineLoop" loopType="WaitUntil">
+    <Parameters>
+        <Parameter name="LHS" type="typedef">getBumperValue(bumpSwitch)</Parameter>
+        <Parameter name="operator" type="typedef">==</Parameter>
+        <Parameter name="RHS" type="float">1</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="moveMotor">
+    <Parameters>
+        <Parameter name="motorPort" type="base typedef" default="motor10" typeDef="tMotor">armMotor</Parameter>
+        <Parameter name="quantity" type="float" default="1">315</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">degrees</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="comment">The Ultrasonic Sensoris on the back so turn, turn, turn</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="turnLeft">
+    <Parameters>
+        <Parameter name="quantity" type="float" default="1">520</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">degrees</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="comment">move backwards to first crossing</ProgrammingBlock>
+
+<ProgrammingBlock type="loop" loopType="WhileDo">
+    <Parameters>
+        <Parameter name="LHS" type="typedef">getDistanceValue(distanceMM)</Parameter>
+        <Parameter name="operator" type="typedef">&gt;</Parameter>
+        <Parameter name="RHS" type="short">0300</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="setMultipleMotors">
+    <Parameters>
+        <Parameter name="speed" type="short" default="50">25</Parameter>
+        <Parameter name="firstMotor" type="base typedef" default="motor1" typeDef="tMotor">leftMotor</Parameter>
+        <Parameter name="secondMotor" type="base typedef" default="noMotor" typeDef="tMotor">rightMotor</Parameter>
+        <Parameter name="thirdMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+        <Parameter name="fourthMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="end"/>
+
+<ProgrammingBlock type="comment">Position for moving West</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="stopMultipleMotors">
+    <Parameters>
+        <Parameter name="firstMotor" type="base typedef" default="motor1" typeDef="tMotor">leftMotor</Parameter>
+        <Parameter name="secondMotor" type="base typedef" default="noMotor" typeDef="tMotor">rightMotor</Parameter>
+        <Parameter name="thirdMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+        <Parameter name="fourthMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="turnLeft">
+    <Parameters>
+        <Parameter name="quantity" type="float" default="1">260</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">degrees</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="loop" loopType="WhileDo">
+    <Parameters>
+        <Parameter name="LHS" type="typedef">getDistanceValue(distanceMM)</Parameter>
+        <Parameter name="operator" type="typedef">&gt;</Parameter>
+        <Parameter name="RHS" type="short">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="setMultipleMotors">
+    <Parameters>
+        <Parameter name="speed" type="short" default="50">25</Parameter>
+        <Parameter name="firstMotor" type="base typedef" default="motor1" typeDef="tMotor">leftMotor</Parameter>
+        <Parameter name="secondMotor" type="base typedef" default="noMotor" typeDef="tMotor">rightMotor</Parameter>
+        <Parameter name="thirdMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+        <Parameter name="fourthMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="end"/>
+
+<ProgrammingBlock type="functionCall" function="stopMultipleMotors">
+    <Parameters>
+        <Parameter name="firstMotor" type="base typedef" default="motor1" typeDef="tMotor">leftMotor</Parameter>
+        <Parameter name="secondMotor" type="base typedef" default="noMotor" typeDef="tMotor">rightMotor</Parameter>
+        <Parameter name="thirdMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+        <Parameter name="fourthMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="comment" commented="1">Postion for moving North</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="turnRight">
+    <Parameters>
+        <Parameter name="quantity" type="float" default="1">260</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">degrees</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="loop" loopType="WhileDo">
+    <Parameters>
+        <Parameter name="LHS" type="typedef">getDistanceValue(distanceMM)</Parameter>
+        <Parameter name="operator" type="typedef">&gt;</Parameter>
+        <Parameter name="RHS" type="short">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="setMultipleMotors">
+    <Parameters>
+        <Parameter name="speed" type="short" default="50">25</Parameter>
+        <Parameter name="firstMotor" type="base typedef" default="motor1" typeDef="tMotor">leftMotor</Parameter>
+        <Parameter name="secondMotor" type="base typedef" default="noMotor" typeDef="tMotor">rightMotor</Parameter>
+        <Parameter name="thirdMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+        <Parameter name="fourthMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="end"/>
+
+<ProgrammingBlock type="functionCall" function="stopMultipleMotors">
+    <Parameters>
+        <Parameter name="firstMotor" type="base typedef" default="motor1" typeDef="tMotor">leftMotor</Parameter>
+        <Parameter name="secondMotor" type="base typedef" default="noMotor" typeDef="tMotor">rightMotor</Parameter>
+        <Parameter name="thirdMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+        <Parameter name="fourthMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="comment">Postion for moving East</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="turnRight">
+    <Parameters>
+        <Parameter name="quantity" type="float" default="1">260</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">degrees</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="loop" loopType="WhileDo">
+    <Parameters>
+        <Parameter name="LHS" type="typedef">getDistanceValue(distanceMM)</Parameter>
+        <Parameter name="operator" type="typedef">&gt;</Parameter>
+        <Parameter name="RHS" type="short">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="setMultipleMotors">
+    <Parameters>
+        <Parameter name="speed" type="short" default="50">25</Parameter>
+        <Parameter name="firstMotor" type="base typedef" default="motor1" typeDef="tMotor">leftMotor</Parameter>
+        <Parameter name="secondMotor" type="base typedef" default="noMotor" typeDef="tMotor">rightMotor</Parameter>
+        <Parameter name="thirdMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+        <Parameter name="fourthMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="end"/>
+
+<ProgrammingBlock type="functionCall" function="stopMultipleMotors">
+    <Parameters>
+        <Parameter name="firstMotor" type="base typedef" default="motor1" typeDef="tMotor">leftMotor</Parameter>
+        <Parameter name="secondMotor" type="base typedef" default="noMotor" typeDef="tMotor">rightMotor</Parameter>
+        <Parameter name="thirdMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+        <Parameter name="fourthMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<RobotConfiguration>#pragma config(Sensor, port2,  touchLED,       sensorVexIQ_LED)
+#pragma config(Sensor, port3,  colorDetector,  sensorVexIQ_ColorHue)
+#pragma config(Sensor, port4,  gyroSensor,     sensorVexIQ_Gyro)
+#pragma config(Sensor, port7,  distanceMM,     sensorVexIQ_Distance)
+#pragma config(Sensor, port8,  bumpSwitch,     sensorVexIQ_Touch)
+#pragma config(Motor,  motor1,          leftMotor,     tmotorVexIQ, openLoop, driveLeft, encoder)
+#pragma config(Motor,  motor6,          rightMotor,    tmotorVexIQ, openLoop, reversed, driveRight, encoder)
+#pragma config(Motor,  motor10,         armMotor,      tmotorVexIQ, openLoop, encoder)
+#pragma config(Motor,  motor11,         clawMotor,     tmotorVexIQ, openLoop, encoder)
+//*!!Code automatically generated by 'ROBOTC' configuration wizard               !!*//
+</RobotConfiguration>
+
+<CSource>#pragma config(Sensor, port2,  touchLED,       sensorVexIQ_LED)
+#pragma config(Sensor, port3,  colorDetector,  sensorVexIQ_ColorHue)
+#pragma config(Sensor, port4,  gyroSensor,     sensorVexIQ_Gyro)
+#pragma config(Sensor, port7,  distanceMM,     sensorVexIQ_Distance)
+#pragma config(Sensor, port8,  bumpSwitch,     sensorVexIQ_Touch)
+#pragma config(Motor,  motor1,          leftMotor,     tmotorVexIQ, openLoop, driveLeft, encoder)
+#pragma config(Motor,  motor6,          rightMotor,    tmotorVexIQ, openLoop, reversed, driveRight, encoder)
+#pragma config(Motor,  motor10,         armMotor,      tmotorVexIQ, openLoop, encoder)
+#pragma config(Motor,  motor11,         clawMotor,     tmotorVexIQ, openLoop, encoder)
+//*!!Code automatically generated by 'ROBOTC' configuration wizard               !!*//
+
+
+task main()
+{
+	// dynamicMazeChallenge
+	// Arm position down on bumper
+	setMotor(armMotor, -50);
+	moveMotor(clawMotor, -10, degrees, 50);
+	waitUntil (getBumperValue(bumpSwitch) == 1);
+	moveMotor(armMotor, 315, degrees, 50);
+	// The Ultrasonic Sensoris on the back so turn, turn, turn
+	turnLeft(520, degrees, 50);
+	// move backwards to first crossing
+	while (getDistanceValue(distanceMM) &gt; 0300) {
+		setMultipleMotors(25, leftMotor, rightMotor, noMotor, noMotor);
+	}
+	// Position for moving West
+	stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
+	turnLeft(260, degrees, 50);
+	while (getDistanceValue(distanceMM) &gt; 50) {
+		setMultipleMotors(25, leftMotor, rightMotor, noMotor, noMotor);
+	}
+	stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
+	//// Postion for moving North
+	turnRight(260, degrees, 50);
+	while (getDistanceValue(distanceMM) &gt; 50) {
+		setMultipleMotors(25, leftMotor, rightMotor, noMotor, noMotor);
+	}
+	stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
+	// Postion for moving East
+	turnRight(260, degrees, 50);
+	while (getDistanceValue(distanceMM) &gt; 50) {
+		setMultipleMotors(25, leftMotor, rightMotor, noMotor, noMotor);
+	}
+	stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
+}
+</CSource>
