@@ -2,9 +2,18 @@
 
 <ProgrammingBlock type="comment">dynamicMazeChallenge</ProgrammingBlock>
 
+<ProgrammingBlock type="functionCall" function="moveMotor">
+    <Parameters>
+        <Parameter name="motorPort" type="base typedef" default="motor10" typeDef="tMotor">armMotor</Parameter>
+        <Parameter name="quantity" type="float" default="1">520</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">degrees</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
 <ProgrammingBlock type="functionCall" function="setMultipleMotors">
     <Parameters>
-        <Parameter name="speed" type="short" default="50">-25</Parameter>
+        <Parameter name="speed" type="short" default="50">-50</Parameter>
         <Parameter name="firstMotor" type="base typedef" default="motor1" typeDef="tMotor">leftMotor</Parameter>
         <Parameter name="secondMotor" type="base typedef" default="noMotor" typeDef="tMotor">rightMotor</Parameter>
         <Parameter name="thirdMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
@@ -12,26 +21,17 @@
     </Parameters>
 </ProgrammingBlock>
 
-<ProgrammingBlock type="comment">move backwards to first crossing</ProgrammingBlock>
+<ProgrammingBlock type="comment">move backwards to first crossing (471 best result yet)</ProgrammingBlock>
 
-<ProgrammingBlock type="loop" loopType="WhileDo">
+<ProgrammingBlock type="OneLineLoop" loopType="WaitUntil">
     <Parameters>
         <Parameter name="LHS" type="typedef">getDistanceValue(distanceMM)</Parameter>
-        <Parameter name="operator" type="typedef">&gt;</Parameter>
-        <Parameter name="RHS" type="float">400</Parameter>
+        <Parameter name="operator" type="typedef">&lt;</Parameter>
+        <Parameter name="RHS" type="short">472</Parameter>
     </Parameters>
 </ProgrammingBlock>
-
-<ProgrammingBlock type="end"/>
 
 <ProgrammingBlock type="comment">Position for moving West</ProgrammingBlock>
-
-<ProgrammingBlock type="functionCall" function="setTouchLEDColor">
-    <Parameters>
-        <Parameter name="nDeviceIndex" type="base typedef" typeDef="tSensors">touchLED</Parameter>
-        <Parameter name="nColor" type="base typedef" typeDef="TSimpleColors">colorRedViolet</Parameter>
-    </Parameters>
-</ProgrammingBlock>
 
 <ProgrammingBlock type="functionCall" function="stopMultipleMotors">
     <Parameters>
@@ -52,7 +52,7 @@
 
 <ProgrammingBlock type="functionCall" function="setMultipleMotors">
     <Parameters>
-        <Parameter name="speed" type="short" default="50">-25</Parameter>
+        <Parameter name="speed" type="short" default="50">-50</Parameter>
         <Parameter name="firstMotor" type="base typedef" default="motor1" typeDef="tMotor">leftMotor</Parameter>
         <Parameter name="secondMotor" type="base typedef" default="noMotor" typeDef="tMotor">rightMotor</Parameter>
         <Parameter name="thirdMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
@@ -60,15 +60,13 @@
     </Parameters>
 </ProgrammingBlock>
 
-<ProgrammingBlock type="loop" loopType="WhileDo">
+<ProgrammingBlock type="OneLineLoop" loopType="WaitUntil">
     <Parameters>
         <Parameter name="LHS" type="typedef">getDistanceValue(distanceMM)</Parameter>
-        <Parameter name="operator" type="typedef">&gt;</Parameter>
-        <Parameter name="RHS" type="float">100</Parameter>
+        <Parameter name="operator" type="typedef">&lt;</Parameter>
+        <Parameter name="RHS" type="short">100</Parameter>
     </Parameters>
 </ProgrammingBlock>
-
-<ProgrammingBlock type="end"/>
 
 <ProgrammingBlock type="functionCall" function="stopMultipleMotors">
     <Parameters>
@@ -91,7 +89,7 @@
 
 <ProgrammingBlock type="functionCall" function="setMultipleMotors">
     <Parameters>
-        <Parameter name="speed" type="short" default="50">-25</Parameter>
+        <Parameter name="speed" type="short" default="50">-50</Parameter>
         <Parameter name="firstMotor" type="base typedef" default="motor1" typeDef="tMotor">leftMotor</Parameter>
         <Parameter name="secondMotor" type="base typedef" default="noMotor" typeDef="tMotor">rightMotor</Parameter>
         <Parameter name="thirdMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
@@ -99,15 +97,13 @@
     </Parameters>
 </ProgrammingBlock>
 
-<ProgrammingBlock type="loop" loopType="WhileDo">
+<ProgrammingBlock type="OneLineLoop" loopType="WaitUntil">
     <Parameters>
         <Parameter name="LHS" type="typedef">getDistanceValue(distanceMM)</Parameter>
-        <Parameter name="operator" type="typedef">&gt;</Parameter>
-        <Parameter name="RHS" type="float">100</Parameter>
+        <Parameter name="operator" type="typedef">&lt;</Parameter>
+        <Parameter name="RHS" type="short">100</Parameter>
     </Parameters>
 </ProgrammingBlock>
-
-<ProgrammingBlock type="end"/>
 
 <ProgrammingBlock type="functionCall" function="stopMultipleMotors">
     <Parameters>
@@ -130,7 +126,7 @@
 
 <ProgrammingBlock type="functionCall" function="setMultipleMotors">
     <Parameters>
-        <Parameter name="speed" type="short" default="50">-25</Parameter>
+        <Parameter name="speed" type="short" default="50">-50</Parameter>
         <Parameter name="firstMotor" type="base typedef" default="motor1" typeDef="tMotor">leftMotor</Parameter>
         <Parameter name="secondMotor" type="base typedef" default="noMotor" typeDef="tMotor">rightMotor</Parameter>
         <Parameter name="thirdMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
@@ -138,15 +134,13 @@
     </Parameters>
 </ProgrammingBlock>
 
-<ProgrammingBlock type="loop" loopType="WhileDo">
+<ProgrammingBlock type="OneLineLoop" loopType="WaitUntil">
     <Parameters>
         <Parameter name="LHS" type="typedef">getDistanceValue(distanceMM)</Parameter>
-        <Parameter name="operator" type="typedef">&gt;</Parameter>
-        <Parameter name="RHS" type="float">100</Parameter>
+        <Parameter name="operator" type="typedef">&lt;</Parameter>
+        <Parameter name="RHS" type="short">100</Parameter>
     </Parameters>
 </ProgrammingBlock>
-
-<ProgrammingBlock type="end"/>
 
 <ProgrammingBlock type="functionCall" function="stopMultipleMotors">
     <Parameters>
@@ -184,29 +178,25 @@
 task main()
 {
 	// dynamicMazeChallenge
-	setMultipleMotors(-25, leftMotor, rightMotor, noMotor, noMotor);
-	// move backwards to first crossing
-	while (getDistanceValue(distanceMM) &gt; 400) {
-	}
+	moveMotor(armMotor, 520, degrees, 50);
+	setMultipleMotors(-50, leftMotor, rightMotor, noMotor, noMotor);
+	// move backwards to first crossing (471 best result yet)
+	waitUntil (getDistanceValue(distanceMM) &lt; 472);
 	// Position for moving West
-	setTouchLEDColor(touchLED, colorRedViolet);
 	stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
 	turnLeft(260, degrees, 50);
-	setMultipleMotors(-25, leftMotor, rightMotor, noMotor, noMotor);
-	while (getDistanceValue(distanceMM) &gt; 100) {
-	}
+	setMultipleMotors(-50, leftMotor, rightMotor, noMotor, noMotor);
+	waitUntil (getDistanceValue(distanceMM) &lt; 100);
 	stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
 	// Postion for moving North
 	turnRight(260, degrees, 50);
-	setMultipleMotors(-25, leftMotor, rightMotor, noMotor, noMotor);
-	while (getDistanceValue(distanceMM) &gt; 100) {
-	}
+	setMultipleMotors(-50, leftMotor, rightMotor, noMotor, noMotor);
+	waitUntil (getDistanceValue(distanceMM) &lt; 100);
 	stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
 	// Postion for moving East
 	turnRight(260, degrees, 50);
-	setMultipleMotors(-25, leftMotor, rightMotor, noMotor, noMotor);
-	while (getDistanceValue(distanceMM) &gt; 100) {
-	}
+	setMultipleMotors(-50, leftMotor, rightMotor, noMotor, noMotor);
+	waitUntil (getDistanceValue(distanceMM) &lt; 100);
 	stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
 }
 </CSource>
