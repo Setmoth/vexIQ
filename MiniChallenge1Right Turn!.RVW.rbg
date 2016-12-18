@@ -103,7 +103,7 @@
     <Parameters>
         <Parameter name="LHS" type="typedef">getGyroDegrees(gyroSensor)</Parameter>
         <Parameter name="operator" type="typedef">&lt;</Parameter>
-        <Parameter name="RHS" type="long">-89</Parameter>
+        <Parameter name="RHS" type="long">-178</Parameter>
     </Parameters>
 </ProgrammingBlock>
 
@@ -158,7 +158,7 @@
     <Parameters>
         <Parameter name="LHS" type="typedef">getGyroDegrees(gyroSensor)</Parameter>
         <Parameter name="operator" type="typedef">&lt;</Parameter>
-        <Parameter name="RHS" type="long">-89</Parameter>
+        <Parameter name="RHS" type="long">-267</Parameter>
     </Parameters>
 </ProgrammingBlock>
 
@@ -185,35 +185,6 @@
         <Parameter name="quantity" type="float" default="1">7</Parameter>
         <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">rotations</Parameter>
         <Parameter name="speed" type="short" default="50">50</Parameter>
-    </Parameters>
-</ProgrammingBlock>
-
-<ProgrammingBlock type="functionCall" function="setTouchLEDColor">
-    <Parameters>
-        <Parameter name="nDeviceIndex" type="base typedef" typeDef="tSensors">touchLED</Parameter>
-        <Parameter name="nColor" type="base typedef" typeDef="TSimpleColors">colorBlue</Parameter>
-    </Parameters>
-</ProgrammingBlock>
-
-<ProgrammingBlock type="functionCall" function="setMotor">
-    <Parameters>
-        <Parameter name="motorPort" type="base typedef" default="motor1" typeDef="tMotor">leftMotor</Parameter>
-        <Parameter name="speed" type="short" default="50">25</Parameter>
-    </Parameters>
-</ProgrammingBlock>
-
-<ProgrammingBlock type="functionCall" function="setMotor">
-    <Parameters>
-        <Parameter name="motorPort" type="base typedef" default="motor1" typeDef="tMotor">rightMotor</Parameter>
-        <Parameter name="speed" type="short" default="50">-25</Parameter>
-    </Parameters>
-</ProgrammingBlock>
-
-<ProgrammingBlock type="OneLineLoop" loopType="WaitUntil">
-    <Parameters>
-        <Parameter name="LHS" type="typedef">getGyroDegrees(gyroSensor)</Parameter>
-        <Parameter name="operator" type="typedef">&lt;</Parameter>
-        <Parameter name="RHS" type="long">-89</Parameter>
     </Parameters>
 </ProgrammingBlock>
 
@@ -267,7 +238,7 @@ task main()
 	setTouchLEDColor(touchLED, colorBlue);
 	setMotor(leftMotor, 25);
 	setMotor(rightMotor, -25);
-	waitUntil (getGyroDegrees(gyroSensor) &lt; -89);
+	waitUntil (getGyroDegrees(gyroSensor) &lt; -178);
 	stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
 	// Third pass
 	setTouchLEDColor(touchLED, colorOrange);
@@ -275,15 +246,11 @@ task main()
 	setTouchLEDColor(touchLED, colorBlue);
 	setMotor(leftMotor, 25);
 	setMotor(rightMotor, -25);
-	waitUntil (getGyroDegrees(gyroSensor) &lt; -89);
+	waitUntil (getGyroDegrees(gyroSensor) &lt; -267);
 	stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
 	// Back to starting position
 	setTouchLEDColor(touchLED, colorOrange);
 	forward(7, rotations, 50);
-	setTouchLEDColor(touchLED, colorBlue);
-	setMotor(leftMotor, 25);
-	setMotor(rightMotor, -25);
-	waitUntil (getGyroDegrees(gyroSensor) &lt; -89);
 	stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
 }
 </CSource>
