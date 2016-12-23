@@ -36,7 +36,7 @@
     <Parameters>
         <Parameter name="LHS" type="typedef">getGyroDegrees(gyroSensor)</Parameter>
         <Parameter name="operator" type="typedef">&gt;</Parameter>
-        <Parameter name="RHS" type="long">89</Parameter>
+        <Parameter name="RHS" type="float">89</Parameter>
     </Parameters>
 </ProgrammingBlock>
 
@@ -75,7 +75,7 @@
     <Parameters>
         <Parameter name="LHS" type="typedef">getGyroDegrees(gyroSensor)</Parameter>
         <Parameter name="operator" type="typedef">&lt;</Parameter>
-        <Parameter name="RHS" type="long">-1</Parameter>
+        <Parameter name="RHS" type="float">-89</Parameter>
     </Parameters>
 </ProgrammingBlock>
 
@@ -114,7 +114,7 @@
     <Parameters>
         <Parameter name="LHS" type="typedef">getGyroDegrees(gyroSensor)</Parameter>
         <Parameter name="operator" type="typedef">&gt;</Parameter>
-        <Parameter name="RHS" type="long">89</Parameter>
+        <Parameter name="RHS" type="float">89</Parameter>
     </Parameters>
 </ProgrammingBlock>
 
@@ -135,29 +135,29 @@
     </Parameters>
 </ProgrammingBlock>
 
-<ProgrammingBlock type="functionCall" function="setMotor">
+<ProgrammingBlock type="functionCall" commented="1" function="setMotor">
     <Parameters>
         <Parameter name="motorPort" type="base typedef" default="motor1" typeDef="tMotor">leftMotor</Parameter>
         <Parameter name="speed" type="short" default="50">-25</Parameter>
     </Parameters>
 </ProgrammingBlock>
 
-<ProgrammingBlock type="functionCall" function="setMotor">
+<ProgrammingBlock type="functionCall" commented="1" function="setMotor">
     <Parameters>
         <Parameter name="motorPort" type="base typedef" default="motor1" typeDef="tMotor">rightMotor</Parameter>
         <Parameter name="speed" type="short" default="50">25</Parameter>
     </Parameters>
 </ProgrammingBlock>
 
-<ProgrammingBlock type="OneLineLoop" loopType="WaitUntil">
+<ProgrammingBlock type="OneLineLoop" commented="1" loopType="WaitUntil">
     <Parameters>
         <Parameter name="LHS" type="typedef">getGyroDegrees(gyroSensor)</Parameter>
         <Parameter name="operator" type="typedef">&gt;</Parameter>
-        <Parameter name="RHS" type="long">89</Parameter>
+        <Parameter name="RHS" type="float">89</Parameter>
     </Parameters>
 </ProgrammingBlock>
 
-<ProgrammingBlock type="functionCall" function="stopMultipleMotors">
+<ProgrammingBlock type="functionCall" commented="1" function="stopMultipleMotors">
     <Parameters>
         <Parameter name="firstMotor" type="base typedef" default="port1" typeDef="tMotor">leftMotor</Parameter>
         <Parameter name="secondMotor" type="base typedef" default="noMotor" typeDef="tMotor">rightMotor</Parameter>
@@ -168,7 +168,15 @@
 
 <ProgrammingBlock type="functionCall" function="forward">
     <Parameters>
-        <Parameter name="quantity" type="float" default="1">2</Parameter>
+        <Parameter name="quantity" type="float" default="1">0.51</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">rotations</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" commented="1" function="backward">
+    <Parameters>
+        <Parameter name="quantity" type="float" default="1">1</Parameter>
         <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">rotations</Parameter>
         <Parameter name="speed" type="short" default="50">50</Parameter>
     </Parameters>
@@ -211,7 +219,7 @@ task main()
 	//forward(4.6, rotations, 50);
 	//setMotor(leftMotor, 25);
 	//setMotor(rightMotor, -25);
-	//waitUntil (getGyroDegrees(gyroSensor) &lt; -1);
+	//waitUntil (getGyroDegrees(gyroSensor) &lt; -89);
 	//stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
 	//forward(11, rotations, 50);
 	//setMotor(leftMotor, -25);
@@ -219,10 +227,11 @@ task main()
 	//waitUntil (getGyroDegrees(gyroSensor) &gt; 89);
 	//stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
 	//backward(3, rotations, 50);
-	setMotor(leftMotor, -25);
-	setMotor(rightMotor, 25);
-	waitUntil (getGyroDegrees(gyroSensor) &gt; 89);
-	stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
-	forward(2, rotations, 50);
+	//setMotor(leftMotor, -25);
+	//setMotor(rightMotor, 25);
+	//waitUntil (getGyroDegrees(gyroSensor) &gt; 89);
+	//stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
+	forward(0.51, rotations, 50);
+	//backward(1, rotations, 50);
 }
 </CSource>
