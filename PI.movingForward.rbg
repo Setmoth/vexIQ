@@ -1,6 +1,6 @@
 <Version>1.0.1</Version>
 
-<ProgrammingBlock type="comment">palmIslandMoveForward</ProgrammingBlock>
+<ProgrammingBlock type="comment">challengePalmIslandUsingBehaviours</ProgrammingBlock>
 
 <ProgrammingBlock type="comment">1 wheel rotation == 20 cm</ProgrammingBlock>
 
@@ -208,7 +208,7 @@
 
 task main()
 {
-	// palmIslandMoveForward
+	// challengePalmIslandUsingBehaviours
 	// 1 wheel rotation == 20 cm
 	resetGyro(gyroSensor);
 	//forward(4, rotations, 50);
