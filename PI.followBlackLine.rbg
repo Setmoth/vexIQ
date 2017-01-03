@@ -23,6 +23,30 @@
 
 <ProgrammingBlock type="end"/>
 
+<ProgrammingBlock type="loop" loopType="WhileDo">
+    <Parameters>
+        <Parameter name="LHS" type="typedef">getDistanceValue(distanceMM)</Parameter>
+        <Parameter name="operator" type="typedef">&gt;</Parameter>
+        <Parameter name="RHS" type="short">100</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="setMotor">
+    <Parameters>
+        <Parameter name="motorPort" type="base typedef" default="motor1" typeDef="tMotor">motor1</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="setMotor">
+    <Parameters>
+        <Parameter name="motorPort" type="base typedef" default="motor1" typeDef="tMotor">motor6</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="end"/>
+
 <RobotConfiguration>#pragma config(Sensor, port2,  touchLED,       sensorVexIQ_LED)
 #pragma config(Sensor, port3,  ,               sensorVexIQ_ColorHue)
 #pragma config(Sensor, port4,  gyroSensor,     sensorVexIQ_Gyro)
@@ -55,6 +79,10 @@ task main()
 	forward(1, rotations, 50);
 	repeat (forever) {
 		lineTrackLeft(port9, 0, 90, 35);
+	}
+	while (getDistanceValue(distanceMM) &gt; 100) {
+		setMotor(motor1, 50);
+		setMotor(motor6, 50);
 	}
 }
 </CSource>
