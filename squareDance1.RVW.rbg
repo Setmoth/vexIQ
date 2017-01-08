@@ -1,6 +1,24 @@
 <Version>1.0.1</Version>
 
+<ProgrammingBlock type="comment">Mini Challenge Square Dance 1</ProgrammingBlock>
+
 <ProgrammingBlock type="loop" loopType="RepeatForever"/>
+
+<ProgrammingBlock type="functionCall" function="forward">
+    <Parameters>
+        <Parameter name="quantity" type="float" default="1">7.4</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">rotations</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="turnRight">
+    <Parameters>
+        <Parameter name="quantity" type="float" default="1">.72</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">rotations</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
 
 <ProgrammingBlock type="end"/>
 
@@ -30,7 +48,10 @@
 
 task main()
 {
+	// Mini Challenge Square Dance 1
 	repeat (forever) {
+		forward(7.4, rotations, 50);
+		turnRight(.72, rotations, 50);
 	}
 }
 </CSource>

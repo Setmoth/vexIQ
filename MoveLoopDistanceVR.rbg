@@ -1,8 +1,14 @@
 <Version>1.0.1</Version>
 
-<ProgrammingBlock type="loop" loopType="RepeatForever"/>
-
-<ProgrammingBlock type="end"/>
+<RBCVersion>1.0.1</RBCVersion>
+<Platform>VEXIQ</Platform>
+<MenuLevel>Basic</MenuLevel>
+<CompilerMode>VirtualWorlds</CompilerMode>
+<CompileAndDownload>Yes</CompileAndDownload>
+<VirtualWorldIndex>4</VirtualWorldIndex>
+<VEXIQDLMethod>Auto</VEXIQDLMethod>
+<NaturalLanguageFlag>True</NaturalLanguageFlag>
+<RVWParameters>vexiqclawbotobstacle iqloopswithsensorcontrol</RVWParameters>
 
 <RobotConfiguration>#pragma config(Sensor, port2,  touchLED,       sensorVexIQ_LED)
 #pragma config(Sensor, port3,  colorDetector,  sensorVexIQ_ColorHue)
@@ -30,7 +36,7 @@
 
 task main()
 {
-	repeat (forever) {
-	}
 }
 </CSource>
+
+

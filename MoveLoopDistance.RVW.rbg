@@ -1,6 +1,28 @@
 <Version>1.0.1</Version>
 
-<ProgrammingBlock type="loop" loopType="RepeatForever"/>
+<ProgrammingBlock type="loop" loopType="RepeatUntil">
+    <Parameters>
+        <Parameter name="LHS" type="typedef">getDistanceValue(distanceMM)</Parameter>
+        <Parameter name="operator" type="typedef">&lt;</Parameter>
+        <Parameter name="RHS" type="short">150</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="forward">
+    <Parameters>
+        <Parameter name="quantity" type="float" default="1">1</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">rotations</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="backward">
+    <Parameters>
+        <Parameter name="quantity" type="float" default="1">1</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">rotations</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
 
 <ProgrammingBlock type="end"/>
 
@@ -30,7 +52,9 @@
 
 task main()
 {
-	repeat (forever) {
+	repeatUntil (getDistanceValue(distanceMM) &lt; 150) {
+		forward(1, rotations, 50);
+		backward(1, rotations, 50);
 	}
 }
 </CSource>

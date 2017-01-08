@@ -1,8 +1,33 @@
 <Version>1.0.1</Version>
 
-<ProgrammingBlock type="loop" loopType="RepeatForever"/>
+<ProgrammingBlock type="loop" loopType="WhileDo">
+    <Parameters>
+        <Parameter name="LHS" type="typedef">getMotorEncoder(leftMotor)</Parameter>
+        <Parameter name="operator" type="typedef">&lt;</Parameter>
+        <Parameter name="RHS" type="long">360</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="setMultipleMotors">
+    <Parameters>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+        <Parameter name="firstMotor" type="base typedef" default="port1" typeDef="tMotor">leftMotor</Parameter>
+        <Parameter name="secondMotor" type="base typedef" default="noMotor" typeDef="tMotor">rightMotor</Parameter>
+        <Parameter name="thirdMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+        <Parameter name="fourthMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+    </Parameters>
+</ProgrammingBlock>
 
 <ProgrammingBlock type="end"/>
+
+<ProgrammingBlock type="functionCall" function="stopMultipleMotors">
+    <Parameters>
+        <Parameter name="firstMotor" type="base typedef" default="port1" typeDef="tMotor">leftMotor</Parameter>
+        <Parameter name="secondMotor" type="base typedef" default="noMotor" typeDef="tMotor">rightMotor</Parameter>
+        <Parameter name="thirdMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+        <Parameter name="fourthMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+    </Parameters>
+</ProgrammingBlock>
 
 <RobotConfiguration>#pragma config(Sensor, port2,  touchLED,       sensorVexIQ_LED)
 #pragma config(Sensor, port3,  colorDetector,  sensorVexIQ_ColorHue)
@@ -30,7 +55,9 @@
 
 task main()
 {
-	repeat (forever) {
+	while (getMotorEncoder(leftMotor) &lt; 360) {
+		setMultipleMotors(50, leftMotor, rightMotor, noMotor, noMotor);
 	}
+	stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
 }
 </CSource>
