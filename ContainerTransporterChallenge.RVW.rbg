@@ -41,7 +41,7 @@
     <Parameters>
         <Parameter name="LHS" type="typedef">getDistanceValue(distanceMM)</Parameter>
         <Parameter name="operator" type="typedef">&lt;</Parameter>
-        <Parameter name="RHS" type="short">100</Parameter>
+        <Parameter name="RHS" type="float">100</Parameter>
     </Parameters>
 </ProgrammingBlock>
 
@@ -92,7 +92,7 @@
     <Parameters>
         <Parameter name="LHS" type="typedef">getGyroDegrees(gyroSensor)</Parameter>
         <Parameter name="operator" type="typedef">&lt;</Parameter>
-        <Parameter name="RHS" type="long">-179</Parameter>
+        <Parameter name="RHS" type="float">-179</Parameter>
     </Parameters>
 </ProgrammingBlock>
 
@@ -112,7 +112,17 @@
     </Parameters>
 </ProgrammingBlock>
 
-<ProgrammingBlock type="functionCall" function="setMultipleMotors">
+<ProgrammingBlock type="comment">At Base</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" function="forward">
+    <Parameters>
+        <Parameter name="quantity" type="float" default="1">2.20</Parameter>
+        <Parameter name="unitType" type="base typedef" default="rotations" typeDef="tMovementUnits">rotations</Parameter>
+        <Parameter name="speed" type="short" default="50">50</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" commented="1" function="setMultipleMotors">
     <Parameters>
         <Parameter name="speed" type="short" default="50">50</Parameter>
         <Parameter name="firstMotor" type="base typedef" default="port1" typeDef="tMotor">leftMotor</Parameter>
@@ -122,13 +132,20 @@
     </Parameters>
 </ProgrammingBlock>
 
-<ProgrammingBlock type="comment">At Base</ProgrammingBlock>
-
-<ProgrammingBlock type="OneLineLoop" loopType="WaitUntil">
+<ProgrammingBlock type="OneLineLoop" commented="1" loopType="WaitUntil">
     <Parameters>
         <Parameter name="LHS" type="typedef">getColorProximity(colorDetector)</Parameter>
         <Parameter name="operator" type="typedef">&lt;</Parameter>
-        <Parameter name="RHS" type="short">103</Parameter>
+        <Parameter name="RHS" type="float">103</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
+<ProgrammingBlock type="functionCall" commented="1" function="stopMultipleMotors">
+    <Parameters>
+        <Parameter name="firstMotor" type="base typedef" default="port1" typeDef="tMotor">leftMotor</Parameter>
+        <Parameter name="secondMotor" type="base typedef" default="noMotor" typeDef="tMotor">rightMotor</Parameter>
+        <Parameter name="thirdMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
+        <Parameter name="fourthMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
     </Parameters>
 </ProgrammingBlock>
 
@@ -136,15 +153,6 @@
     <Parameters>
         <Parameter name="nDeviceIndex" type="base typedef" typeDef="tSensors">touchLED</Parameter>
         <Parameter name="nColor" type="base typedef" typeDef="TSimpleColors">colorViolet</Parameter>
-    </Parameters>
-</ProgrammingBlock>
-
-<ProgrammingBlock type="functionCall" function="stopMultipleMotors">
-    <Parameters>
-        <Parameter name="firstMotor" type="base typedef" default="port1" typeDef="tMotor">leftMotor</Parameter>
-        <Parameter name="secondMotor" type="base typedef" default="noMotor" typeDef="tMotor">rightMotor</Parameter>
-        <Parameter name="thirdMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
-        <Parameter name="fourthMotor" type="base typedef" default="noMotor" typeDef="tMotor">noMotor</Parameter>
     </Parameters>
 </ProgrammingBlock>
 
@@ -177,7 +185,7 @@
     <Parameters>
         <Parameter name="LHS" type="typedef">getGyroDegrees(gyroSensor)</Parameter>
         <Parameter name="operator" type="typedef">&gt;</Parameter>
-        <Parameter name="RHS" type="long">-1</Parameter>
+        <Parameter name="RHS" type="float">-1</Parameter>
     </Parameters>
 </ProgrammingBlock>
 
@@ -198,13 +206,6 @@
 </ProgrammingBlock>
 
 <ProgrammingBlock type="end"/>
-
-<ProgrammingBlock type="functionCall" function="setTouchLEDColor">
-    <Parameters>
-        <Parameter name="nDeviceIndex" type="base typedef" typeDef="tSensors">touchLED</Parameter>
-        <Parameter name="nColor" type="base typedef" typeDef="TSimpleColors">colorYellow</Parameter>
-    </Parameters>
-</ProgrammingBlock>
 
 <RobotConfiguration>#pragma config(Sensor, port2,  touchLED,       sensorVexIQ_LED)
 #pragma config(Sensor, port3,  colorDetector,  sensorVexIQ_ColorHue)
@@ -250,11 +251,12 @@ task main()
 		waitUntil (getGyroDegrees(gyroSensor) &lt; -179);
 		stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
 		setTouchLEDColor(touchLED, colorBlue);
-		setMultipleMotors(50, leftMotor, rightMotor, noMotor, noMotor);
 		// At Base
-		waitUntil (getColorProximity(colorDetector) &lt; 103);
+		forward(2.20, rotations, 50);
+		//setMultipleMotors(50, leftMotor, rightMotor, noMotor, noMotor);
+		//waitUntil (getColorProximity(colorDetector) &lt; 103);
+		//stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
 		setTouchLEDColor(touchLED, colorViolet);
-		stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
 		// Drop Block
 		moveMotor(clawMotor, 1, seconds, -50);
 		setMotor(leftMotor, -25);
@@ -263,6 +265,5 @@ task main()
 		stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
 		setTouchLEDColor(touchLED, colorRed);
 	}
-	setTouchLEDColor(touchLED, colorYellow);
 }
 </CSource>
