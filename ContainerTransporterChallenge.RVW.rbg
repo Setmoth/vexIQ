@@ -2,13 +2,6 @@
 
 <ProgrammingBlock type="comment">Grab four containers and place them in a designated area</ProgrammingBlock>
 
-<ProgrammingBlock type="functionCall" function="setTouchLEDColor">
-    <Parameters>
-        <Parameter name="nDeviceIndex" type="base typedef" typeDef="tSensors">touchLED</Parameter>
-        <Parameter name="nColor" type="base typedef" typeDef="TSimpleColors">colorRed</Parameter>
-    </Parameters>
-</ProgrammingBlock>
-
 <ProgrammingBlock type="functionCall" function="resetGyro">
     <Parameters>
         <Parameter name="nDeviceIndex" type="base typedef" typeDef="tSensors">gyroSensor</Parameter>
@@ -133,9 +126,9 @@
 
 <ProgrammingBlock type="OneLineLoop" loopType="WaitUntil">
     <Parameters>
-        <Parameter name="LHS" type="typedef">getColorGrayscale(colorDetector)</Parameter>
+        <Parameter name="LHS" type="typedef">getColorProximity(colorDetector)</Parameter>
         <Parameter name="operator" type="typedef">&lt;</Parameter>
-        <Parameter name="RHS" type="short" typeDef="TSimpleColors">35</Parameter>
+        <Parameter name="RHS" type="short">103</Parameter>
     </Parameters>
 </ProgrammingBlock>
 
@@ -197,7 +190,21 @@
     </Parameters>
 </ProgrammingBlock>
 
+<ProgrammingBlock type="functionCall" function="setTouchLEDColor">
+    <Parameters>
+        <Parameter name="nDeviceIndex" type="base typedef" typeDef="tSensors">touchLED</Parameter>
+        <Parameter name="nColor" type="base typedef" typeDef="TSimpleColors">colorRed</Parameter>
+    </Parameters>
+</ProgrammingBlock>
+
 <ProgrammingBlock type="end"/>
+
+<ProgrammingBlock type="functionCall" function="setTouchLEDColor">
+    <Parameters>
+        <Parameter name="nDeviceIndex" type="base typedef" typeDef="tSensors">touchLED</Parameter>
+        <Parameter name="nColor" type="base typedef" typeDef="TSimpleColors">colorYellow</Parameter>
+    </Parameters>
+</ProgrammingBlock>
 
 <RobotConfiguration>#pragma config(Sensor, port2,  touchLED,       sensorVexIQ_LED)
 #pragma config(Sensor, port3,  colorDetector,  sensorVexIQ_ColorHue)
@@ -226,7 +233,6 @@
 task main()
 {
 	// Grab four containers and place them in a designated area
-	setTouchLEDColor(touchLED, colorRed);
 	resetGyro(gyroSensor);
 	// Open claw
 	moveMotor(clawMotor, 1, seconds, -50);
@@ -246,7 +252,7 @@ task main()
 		setTouchLEDColor(touchLED, colorBlue);
 		setMultipleMotors(50, leftMotor, rightMotor, noMotor, noMotor);
 		// At Base
-		waitUntil (getColorGrayscale(colorDetector) &lt; 35);
+		waitUntil (getColorProximity(colorDetector) &lt; 103);
 		setTouchLEDColor(touchLED, colorViolet);
 		stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
 		// Drop Block
@@ -255,6 +261,8 @@ task main()
 		setMotor(rightMotor, 25);
 		waitUntil (getGyroDegrees(gyroSensor) &gt; -1);
 		stopMultipleMotors(leftMotor, rightMotor, noMotor, noMotor);
+		setTouchLEDColor(touchLED, colorRed);
 	}
+	setTouchLEDColor(touchLED, colorYellow);
 }
 </CSource>
